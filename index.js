@@ -1,58 +1,59 @@
 
 var fs = require("fs");
+var indexdir = function () { // 1
 
-function indexDir(){
-	this.file =  publicfile;
-	this.dir  = publicdir;
+    this.dir= dir;
+	this.file = file;
+	
+	
 }
 
-publicdir = function(dirname,extencion,app){
 
-	var imagesDir = __dirname + dirname;
+function dir(dirname,extencion,app){
+	
+	var imagesDir = dirname;
 	var dirimg = fs.readdirSync(imagesDir);
-    
+	
+	
+	
 	for(var i = 0; i <= dirimg.length-1;i++){
     
-    	if(dirimg[i].toString().search(extencion[0]) > - 1 || dirimg[i].toString().search(extencion[1]) > -1){
+    if(dirimg[i].toString().search(extencion[0]) > - 1 ){
     
+		console.log(dirimg[i].toString());
+		
         app.get("/"+dirimg[i],function(req,res){
-            setHeader(res);
+            
             res.sendFile(imagesDir +"/"+req.route.path);
             
         });
-   	}else{
+    }else{
         console.log("archivos invalidos");
-    	}
+    }
            
         
 	}
 }
 
-publicfile = function(ruta,public,app){
-    var  value = false;
-    for(var  i = 0 ;i <= filesPublic.length-1;i++){
-        if(public  == filesPublic[i]){
-                value = true;
-        }
-    }
-    
-    if(value==true){
-        console.log("Existe Archivo montado");
-    }else{
-        
-        var dir = __dirname + ruta;
-        // dir = fs.readFileSync(dir,'utf-8');
-        pushFilePublic(public);
+
+
+function file(ruta,public,app){
+
+        var dir =  ruta;
+       		
         app.get("/"+public,function(req,res){
-				setHeader(res);
+
                 res.sendFile(dir);
             
             
         });
 
-    }
+    
         
 }
 
 
-module.export = indexDir();
+
+
+
+module.exports = new indexdir; //2
