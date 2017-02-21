@@ -1,5 +1,5 @@
 # IndexDir
-Publica directorios o archivos completos  para nodejs
+Publica directorios o archivos completos  para nodejs express
 
 var app = require("express")();
 
@@ -10,9 +10,9 @@ var indexdir = require("indexdir");
 
 var rutadeArchivo = __dirname+"/images/icon.png;
 
-var rutapublica = "icon.png"  https://miweb/icon.png
+var rutapublica = "icon.png" // https://miweb/icon.png
 
-index.file(rutadeArchivo,"icon.png",app);
+indexdir.file(rutadeArchivo,"icon.png",app);
 
 #Para hacer publica una carpeta
 
